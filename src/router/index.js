@@ -7,7 +7,6 @@ import PokedexDetail from '@/components/PokedexDetail.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/',
