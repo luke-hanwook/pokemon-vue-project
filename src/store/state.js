@@ -1,5 +1,8 @@
 const state = {
-  pokemons: []
+  pokemons: {},
+  pokemon: {},
+  pokemonDetail: {},
+  evolutionChain: []
 }
 
 export default state

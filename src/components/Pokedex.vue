@@ -1,53 +1,108 @@
 <template>
-    <div>
-      <div v-if="loading">loading...</div>
-      <div
-        v-else
-        :class="`poke-cell`"
-        :style="`background-image: url(${p.sprites.front_default})`"
-        v-for="p in pokemons"
-        :key="p.id">
-        {{p.id}}: {{p.name}}
-      </div>
-
-    </div>
+  <section>
+    <PokeList />
+    <transition name="router-transition">
+      <router-view />
+    </transition>
+  </section>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import PokeList from './PokeList.vue'
 
 export default {
+  components: { PokeList },
   data () {
     return {
-      hello: 'pokemon',
-      loading: false
+      loading: false,
+      currentOffSetTopOfEl: 0,
+      initOffSetTopOfEl: 0
     }
   },
   created () {
-    this.fetchData()
+    console.log('pokedex created')
+    // this.fetchData()
+    // window.addEventListener('scroll', () => {
+    //   this.bottomVisible()
+    // })
   },
-  computed: {
-    ...mapState({
-      pokemons: 'pokemons'
-    })
+  updated () {
+    // console.log('updated')
+    // this.calScrollTop()
+  },
+  watch: {
+    // '$route' (to, from) {
+    //   const toDepth = to.path.split('/').length
+    //   const fromDepth = from.path.split('/').length
+    //   this.transitionName = toDepth > fromDepth ? 'router-transition' : 'slide-down'
+    // },
+    // currentOffSetTopOfEl (px) {
+    //   if (px <= 0) {
+    //     console.log('fetch')
+    //     this.fetchData(this.pokemons.next)
+    //   }
+    // },
+    // initOffSetTopOfEl (px) {
+    //   if (px > 0) {
+    //     this.fetchData(this.pokemons.next)
+    //   }
+    // }
   },
   methods: {
-    ...mapActions([
-      'FETCH_POKEMONS'
-    ]),
-    fetchData () {
-      this.loading = true
-      this.FETCH_POKEMONS().finally((result) => { this.loading = false })
-    }
+    // ...mapActions([
+    //   'FETCH_POKEMONS'
+    // ]),
+    // fetchData () {
+    //   this.loading = true
+    //   this.FETCH_POKEMONS({url: this.pokemons.next}).finally((result) => { this.loading = false })
+    // },
+    // calScrollTop () {
+    //   let offsetTopOfLastEl = this.$refs.pokeList.lastElementChild.offsetTop
+    //   let visible = document.documentElement.clientHeight
+    //   let scrollY = window.pageYOffset
+    //   let offsetOfScroll = visible + scrollY
+    //   let curOffset = offsetTopOfLastEl - offsetOfScroll
+    //   if (curOffset < 0) {
+    //     console.log('init')
+    //     this.initOffSetTopOfEl = visible - offsetTopOfLastEl
+    //   }
+    // },
+    // bottomVisible () {
+    //   let lastElOfPokeList = this.$refs.pokeList.lastElementChild
+    //   if (lastElOfPokeList) {
+    //     let scrollY = window.pageYOffset
+    //     let visible = document.documentElement.clientHeight
+    //     let offsetOfScroll = visible + scrollY - (lastElOfPokeList.offsetTop + 360)
+    //     this.currentOffSetTopOfEl = offsetOfScroll
+    //   }
+    // }
   }
 }
 </script>
 
-<style>
-  .poke-cell {
-    width: 120px;
-    height: 120px;
-    border: 1px solid black;
-    display: inline-block;
-  }
+<style lang="scss">
+.list-wrapper {
+  display: inline-block;
+  /* width: 100%;
+  height: 100%; */
+}
+.poke-list {
+  position: relative;
+}
+ .router-transition-enter-active,
+ .router-transition-leave-active {
+  transition: all .5s ease;
+}
+.router-transition-enter, .router-transition-leave-active {
+  transform: translateY(100%);
+}
+
+.poke-cell {
+  width: 120px;
+  height: 120px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url('../assets/sprites.png');
+}
 </style>

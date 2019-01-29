@@ -1,26 +1,26 @@
 import axios from 'axios'
 
 const DOMAIN = 'https://pokeapi.co/api/v2'
-const limit = 7
+const limit = 10
 
 const request = (method, url, data) => {
   return axios({
     method,
-    url: DOMAIN + url,
+    url: url,
     data
   }).catch(result => console.log(result.response.data))
 }
 
 export const common = {
-  get (url) {
+  fetch (url = `${DOMAIN}/pokemon/?limit=${limit}`) {
     return request('GET', url)
       .then(result => result.data)
   }
 }
 
 export const pokemon = {
-  fetch () {
-    return request('GET', `/pokemon/?limit=${limit}`)
+  get (id) {
+    return request('GET', `${DOMAIN}/pokemon/${id}`)
       .then(result => result.data)
   }
 }
