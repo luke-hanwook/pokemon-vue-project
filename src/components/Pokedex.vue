@@ -96,13 +96,4 @@ export default {
 .router-transition-enter, .router-transition-leave-active {
   transform: translateY(100%);
 }
-
-.poke-cell {
-  width: 120px;
-  height: 120px;
-  border: none;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-image: url('../assets/sprites.png');
-}
 </style>
