@@ -1,9 +1,12 @@
 <template>
-  <router-link :to="`/pokemon/${index}`">
-    <button :class="`poke-cell sprites-${index}`">
-      #{{index}}
-    </button>
-  </router-link>
+  <div class="list-wrapper">
+    <router-link :to="`/pokemon/${index}`">
+      <button :class="`btn poke-cell sprites-${index}`" />
+    </router-link>
+    <div class="poke-id-wrapper">
+      <div class="poke-id">#{{index}}</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -15,5 +18,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.list-wrapper {
+  margin: 10px;
+  display: flex;
+}
+.poke-id {
+  display: inline-block;
+  padding: 5px;
+  background-color: rgba(94, 84, 84, 0.527);
+  color: rgb(255, 255, 255);
+}
+.poke-id-wrapper {
+  height: 16px;
+  width: 120px;
+  position: absolute;
+  text-align: right;
+}
 </style>

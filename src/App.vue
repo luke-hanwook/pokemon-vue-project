@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>{{helloworld}}</div>
+    <div class="pokedex-title">{{helloworld}}</div>
     <router-view />
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
   name: 'App',
   data () {
     return {
-      helloworld: 'pokemon api'
+      helloworld: 'POKEDEX'
     }
   }
 }
@@ -19,5 +19,12 @@ export default {
 <style>
 html, body {
   height: 100%;
+  overflow: hidden;
+}
+.pokedex-title {
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
+  margin: 10px;
 }
 </style>

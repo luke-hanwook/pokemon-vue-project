@@ -20,19 +20,13 @@ export default {
   },
   render (CreateElement) {
     const elementMap = pokeClasses.map(result => {
-      return new CreateElement('div', {
-        'class': 'list-wrapper',
-        key: result.id
-      },
-      [
-        CreateElement(Pokecell, {
-          props: {
-            index: result.id,
-            backgroundPosition: result.backgroundPosition
-          }
-        })
-      ]
-      )
+      return new CreateElement(Pokecell, {
+        key: result.id,
+        props: {
+          index: result.id,
+          backgroundPosition: result.backgroundPosition
+        }
+      })
     })
 
     return new CreateElement('div',

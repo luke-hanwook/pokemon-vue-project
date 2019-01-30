@@ -1,9 +1,10 @@
 <template>
-  <div class="poke-list">
-    <div v-for="e in evolutionChain" :key="e.id" class="list-wrapper">
-      <div class="poke-cell">
-        <p>{{e.name}}</p>
-        <p>{{e.id}}</p>
+  <div class="poke-add poke-evolution-chain">
+    <div v-for="e in evolutionChain" :key="e.id">
+      <div class="poke-cell"></div>
+      <div class="poke-evo-name">
+        <span>#{{e.id}}</span>
+        <span>{{e.name}}</span>
       </div>
     </div>
   </div>
@@ -22,12 +23,19 @@ export default {
   updated () {
     this.evolutionChain.forEach((e, index) => {
       const els = this.$el.querySelectorAll('.poke-cell')
-      console.log(Array.from(els)[index].style.backgroundPosition = getComputedStyle(document.querySelector(`.sprites-${e.id}`)).backgroundPosition)
+      Array.from(els)[index].style.backgroundPosition = getComputedStyle(document.querySelector(`.sprites-${e.id}`)).backgroundPosition
     })
   }
 }
 </script>
 
-<style>
-
+<style lang="css">
+.poke-evolution-chain {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.poke-evo-name {
+  text-align: center;
+}
 </style>

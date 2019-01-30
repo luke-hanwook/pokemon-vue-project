@@ -1,4 +1,5 @@
 /* eslint-disable */
+import PokemonColor from './PokemonColor.js'
 
 class Pokemon {
   constructor (data) {
@@ -7,7 +8,10 @@ class Pokemon {
     this.front_default = data.sprites.front_default
     this.front_shiny = data.sprites.front_shiny
     this.type = data.types.map(item => {
-      return item.type.name
+      return {
+        name: item.type.name,
+        color: PokemonColor[item.type.name]
+      }
     })
     this.species = data.species
     this.height = data.height / 10
