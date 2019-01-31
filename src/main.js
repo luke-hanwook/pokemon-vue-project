@@ -7,6 +7,11 @@ import store from './store'
 
 import '@/sass/main.scss'
 import '@/sass/media.scss'
+
+import loading from '@/components/Loading.vue'
+
+Vue.component('Loading', loading)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -1,6 +1,7 @@
 <template>
     <div class="poke-add poke-description">
-      <div class="poke-description-wrapper">
+      <Loading v-if="isLoading"/>
+      <div class="poke-description-wrapper" v-else>
         <div class="poke-genera">
           <p>{{pokemonDetail.genera}}</p>
           <div class="poke-generation">
@@ -20,6 +21,11 @@ import { mapState, mapActions } from 'vuex'
 
 export default {
   props: [ 'id', 'speciesUrl' ],
+  data () {
+    return {
+      isLoading: false
+    }
+  },
   computed: {
     ...mapState({
       pokemonDetail: 'pokemonDetail'
@@ -34,7 +40,10 @@ export default {
     ]),
     fetchPokemonDetail (url) {
       if (this.id !== this.pokemonDetail.id) {
-        this.FETCH_POKEMON_DETAIL({url})
+        this.isLoading = true
+        this.FETCH_POKEMON_DETAIL({url}).finally(_ => {
+          this.isLoading = false
+        })
       }
     }
   }

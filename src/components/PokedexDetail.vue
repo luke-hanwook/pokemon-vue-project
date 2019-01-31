@@ -9,7 +9,8 @@
         <button @click="onZoom" class="btn">&#x25B4;</button>
       </div>
 
-      <div class="poke-detail-view">
+      <Loading v-if="isLoading"/>
+      <div class="poke-detail-view" v-else>
         <div class="poke-detail-init">
           <div class="poke-img">
             <div class="poke-img-chang-btn">
@@ -65,7 +66,8 @@ export default {
     return {
       isZoom: false,
       show: false,
-      isShiny: false
+      isShiny: false,
+      isLoading: false
     }
   },
   computed: {
@@ -79,7 +81,10 @@ export default {
 
   },
   created () {
-    this.FETCH_POKEMON({id: this.id})
+    this.isLoading = true
+    this.FETCH_POKEMON({id: this.id}).finally(_ => {
+      this.isLoading = false
+    })
   },
   updated () {
     if (this.pokemon.type.length > 1) {

@@ -1,3 +1,5 @@
+$pokedex-backgoundColor: rgba(255, 0, 0, 0.747);
+
 html, body {
   height: 100%;
   overflow: hidden;
@@ -20,7 +22,7 @@ html, body {
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 0, 0, 0.747);
+  background-color: $pokedex-backgoundColor;
   position: fixed;
   top: 0;
   left: 0;
@@ -109,7 +111,7 @@ section {
   right: 0;
   width: 100%;
   height: 100%;
-  background-color:#FDFCFD;
+  background-color:rgba( 255, 255, 255, 0.7 );
   position: fixed;
 }
 .poke-detail-view {
