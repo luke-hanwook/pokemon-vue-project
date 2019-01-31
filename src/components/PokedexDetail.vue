@@ -107,17 +107,23 @@ export default {
       this.show = !this.show
       this.isZoom = !this.isZoom
       const el = document.querySelector('.poke-detail-wrapper')
+      const detailViewEl = document.querySelector('.poke-detail-view')
+      // overflow-y: scroll;
       el.style.transition = 'all .5s'
       if (this.isZoom) {
         el.style.top = '0'
         // el.style.height = '100%'
         e.target.style.transform = 'rotate(180deg)'
         document.body.style.overflow = 'hidden'
+        detailViewEl.style.overflowY = 'scroll'
+        detailViewEl.classList.add('poke-detail-view-zoom')
       } else {
         el.style.top = '40%'
         // el.style.height = '50%'
         e.target.style.transform = 'rotate(0deg)'
         document.body.style.overflow = ''
+        detailViewEl.style.overflowY = 'hidden'
+        detailViewEl.classList.remove('poke-detail-view-zoom')
       }
     },
     leave (el, done) {
@@ -129,165 +135,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.poke-detail-container {
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-}
-.poke-detail-back {
-  z-index: 3;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  position: fixed;
-  background-color:rgba( 255, 255, 255, 0.7 );
-  display: flex;
-  justify-content: center;
-  button {
-    transition: all .5s;
-    position:relative;
-    top: -50px;
-    align-self: flex-start;
-    font-size: 2rem;
-    margin: 10px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-  }
-}
-.poke-detail-back:hover {
-  button {
-    top: 0;
-    display: block;
-  }
-}
-.poke-detail-wrapper {
-  z-index: 4;
-  top: 40%;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color:#FDFCFD;
-  position: fixed;
-}
-.poke-detail-view {
-  max-width: 37.5rem;
-  max-height: 30rem;
-  margin: 3rem auto;
-  background-color:rgba( 255, 255, 255, 0.7 );
-  overflow-y: scroll;
-}
-.poke-detail-init {
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.poke-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.poke-detail-title {
-  h3 {
-    display: inline-block;
-    margin: 0;
-    font-size: 2rem;
-  }
-  h4 {
-    display: inline-block;
-    margin: 0;
-  }
-}
-.poke-detail-tag {
-  margin: 10px;
-}
-.poke-type-tag {
-  color: #FDFCFD;
-  display: inline-block;
-  span {
-    padding: 5px;
-    margin-right: 5px;
-  }
-}
-
-.poke-img {
-  display: flex;
-  flex-direction: column;
-}
-
-.poke-image {
-  display: inline-block;
-  margin: 10px;
-  img {
-    width: 12rem;
-  }
-}
-
-.poke-img-chang-btn {
-  position: absolute;
-  margin: 0px;
-  button {
-    margin: 10px;
-    font-size: 1.3rem;
-    opacity: .6;
-  }
-  button:hover {
-    opacity: 1;
-  }
-}
-
-.poke-detail-addinfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.poke-add {
-  margin: 10px 2rem;
-  border: 1px solid rgba( 255, 255, 255, 0.7 );
-  background-color: #FDFCFD;
-  border-radius: 15px;
-}
-
-.poke-detail-profile {
-  display: flex;
-  justify-content: center;
-  ul {
-    padding: 0;
-    width: 90%;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-around;
-  }
-  li {
-    display: inline-block;
-  }
-}
-
-.zoom-enter-active,
-.zoom-leave-active {
-  transition: all .5s
-}
-
-.btn-zoom {
-  transition: all .3s;
-  text-align: center;
-  button {
-    z-index: 10;
-    transition: all .5s;
-    height: 30px;
-    width: 30px;
-    font-size: 1.5rem;
-  }
-}
-.btn-zoom:hover {
-  background-color:rgba( 255, 255, 255, 0.7 );
-}
-</style>
