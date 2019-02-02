@@ -108,11 +108,13 @@ $breakpoints: (
 @include respond-below(xs) {
   .poke-fixed-wrap {
     max-width: none;
+    width: auto;
   }
 
   .poke-detail-view {
     max-width: none;
     margin: 0;
+    width: auto;
   }
 
   .poke-detail-init {

@@ -1,11 +1,11 @@
 <template>
   <div class="list-wrapper">
-    <router-link :to="`/pokemon/${index}`">
-      <button :class="`btn poke-cell sprites-${index}`" />
-    </router-link>
     <div class="poke-id-wrapper">
       <div class="poke-id">#{{index}}</div>
     </div>
+    <router-link :to="`/pokemon/${index}`">
+      <button :class="`btn poke-cell sprites-${index}`" />
+    </router-link>
   </div>
 </template>
 
