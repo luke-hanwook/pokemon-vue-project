@@ -1,6 +1,19 @@
 # pokemon-vue-project
 
-> A Vue.js project
+[Demo](https://luke-hanwook.github.io/pokemon-vue-project/#/)
+
+## Description
+Vue project that use a [poke api](https://pokeapi.co/) (Only GET Method on HTTP)
+
+### Tested Browser
+- Chrome
+- Firefox
+- IE (10+)
+
+### Using Tech Stack
+- Vue.js (with relation library Vuex, Vue-Router, axios)
+- Sass (Scss)
+- Javascript (ES6)
 
 ## Build Setup
 
