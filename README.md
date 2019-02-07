@@ -2,7 +2,7 @@
 
 [Demo](https://luke-hanwook.github.io/pokemon-vue-project/#/)
 
-![img](./pokegif.gif)
+![img](./pokegit.gif?raw=true)
 
 ## Description
 Vue project that use a [poke api](https://pokeapi.co/) (Only GET Method on HTTP)
